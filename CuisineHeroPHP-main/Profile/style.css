@@ -1,0 +1,414 @@
+*{
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+
+}
+.collapsibleNavbar{
+    transition: ease 0.8s;
+}
+#banner{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:rgba(12, 221, 158, 0.767);
+    justify-content: space-between;
+    width: 100%;
+    min-height: 8vh;
+    z-index: 1000;
+    align-items: center;
+    margin:auto;
+    top: 0;
+}
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    margin-top: 2vh;
+}
+#navtext{
+    font-family: 'Raleway';
+    font-size: 3vw;
+    color: white;
+    transition: top .6s;
+}
+.nav-link{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    list-style: none;
+    font-family: 'Krub';
+}
+.navbar-brand img{
+    width: 50px;
+    height: 50px;
+}
+.navbar{
+    position: relative;
+}
+
+#picbanner{
+    display: block;
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+.picban{
+    position:absolute;
+    width: 70%;
+    left: 14vw;
+    height: 250px;
+    overflow: hidden;
+    z-index: -1;
+}
+.dispic{
+    width: 52vw;
+    position:absolute;
+    top: 270px;
+    z-index: 0;
+}
+.dispic img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 500px;
+    border: 1px solid black;
+    z-index: 1;
+}
+.profile-name{
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 350px;
+    left: 34vw;
+    width: 40vw;
+}
+.recp{
+    text-align: left;
+}
+.accnos{
+    position: absolute;
+    left: 35vw;
+    top: 390px;
+    text-align: left;
+    width: 35vw;
+}
+button.btn#Edit div:hover{
+    filter: invert(100);
+
+    padding-right: 5px;
+    padding-left:5px;
+    font-size: 18px;
+}
+button.btn#Edit div{
+    position: absolute;
+    transition: ease-in-out 0.5s;
+    left: 71vw;
+    top: 255px;
+    width: 120px;
+    border-radius: 100px;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    font-family: 'Raleway';
+    font-size:15px;
+}
+.spacing{
+    margin-top: 360px;
+    border-top: 1px solid grey;
+    width: 800px;
+}
+.tab1 a.active{
+    border-top: 5px solid black !important;
+    transition: ease-in-out 0.2s;
+    border-radius: 0px;
+}
+.tab1 a{
+    color: black;
+    margin: auto;
+    display: block;
+}
+.tab1{
+    margin-left: 5px;
+    margin-right: 5px;
+} 
+.options{
+    display: block;
+    text-align: left;
+}
+#croppie-demo1{
+    height: 250px;
+}
+.Editbtn{
+    width: 0;
+    margin: 0;
+    padding: 0; 
+}
+.card{
+    transition:  0.5s ease;
+    border: solid black 1px;
+    height: max-content;
+    width: auto;
+    padding:20px;
+    margin-bottom:20px !important;
+    margin: 20px;
+    box-shadow: 5px 6px 5px -3px rgba(0,0,0,0.55);
+-webkit-box-shadow: 5px 6px 5px -3px rgba(0,0,0,0.55);
+-moz-box-shadow: 5px 6px 5px -3px rgba(0,0,0,0.55);
+cursor: pointer;
+}
+.card:hover{
+    transform: translate(0%, -1%);
+    box-shadow: 11px 11px 18px -1px rgba(0,0,0,0.62);
+-webkit-box-shadow: 11px 11px 18px -1px rgba(0,0,0,0.62);
+-moz-box-shadow: 11px 11px 18px -1px rgba(0,0,0,0.62);
+}
+
+.following{
+    box-shadow: none;
+    margin: 10px !important;
+    width: 100px !important;
+    border: solid transparent;
+}
+.following:hover{
+    box-shadow: none;
+    transform: translate(0%, 2%);
+}
+#bio{
+    overflow-wrap: break-word;
+}
+.biocon{
+    position: absolute;
+    left: 12vw;
+    width: 50vw;
+    height: 55px;
+    overflow: hidden;
+}
+.dp{
+    position: relative;
+    width:50px;
+    height:50px;
+    border: solid black;
+    border-radius: 25px;
+    overflow: hidden;
+    top: 25px;
+    margin-bottom: 50px;
+}
+.dp img{
+    max-width:100%;
+    max-height:100%;
+}
+.usrnm{
+    position: relative;
+    left: 65px;
+    top:-60px;
+}
+.usrnm p{
+    font-family: 'Krub';
+    font-size: 15px;
+}
+.foodpic{
+    margin-top:-50px;
+    margin-bottom:20px;
+    width:210px;
+    height: auto;
+    overflow: hidden;
+}
+.foodpic img{
+    max-width:100%;
+    max-height:100%;
+}
+.foodpic.recp-tab{
+    margin-top: 0px;
+}
+.foodlabel{
+    font-family: 'Raleway';
+}
+.card a:link,.card a:visited,.card a:hover,.card a:active{
+    text-decoration: none;
+    color: black;
+}
+.nav.nav-tabs.justify-content-center{
+    z-index: 1;
+}
+button.follow-btn.followed div{
+    filter: invert(0);
+}
+button.follow-btn div:hover{
+    filter: invert(0);
+    transition: ease-in-out 0.2s;
+}
+button.follow-btn div{
+    filter: invert(100);
+    position: absolute;
+    left: 71vw;
+    top: 255px;
+    width: 120px;
+    border-radius: 100px;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+}
+.following{
+    width: 200px;
+    margin: 0px;
+    padding: 10px;
+}
+.following .dp{
+    margin: 0px;
+}
+.following .usrnm{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    bottom: 0px;
+    top: -10px;
+}
+.accnos{
+    font-family: 'Raleway';
+}
+#bio{
+    font-family: 'Raleway';
+}
+.profile-name{
+    font-family: 'Raleway';
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+    #bio{
+        position: static;
+    }
+    .biocon{
+        position: static;
+    }
+    button.btn#Edit div{
+        position: static;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    button.follow-btn div{
+        position: static;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .foodpic{
+        width:auto;
+    }
+    .picban{
+        right: 5px;
+        width: 100%;
+        left: -15px;
+        box-sizing: content-box;
+    }
+    .tab1 a.active{
+        border-top: 0px none !important;
+        transition: ease-in-out 0.2s;
+        border-bottom: 5px solid black !important;
+    }
+    .dispic{
+        position:static;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 170px;
+    }
+    .row .Editbtn{
+        position: static;
+        min-width: 105vw;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    .tab1{
+        margin-top: 0;
+        border-top: 0px;
+        margin-left: 0;
+        margin-right: 0;
+        border-bottom: 1px solid grey;
+        width: 100px;
+    }
+    .tab1 a img{
+        margin: auto;
+    }
+    .spacing{
+        margin-top: 0px;
+        border-top: 0px;
+        width: 500px;
+    }
+    .dispic img{
+        z-index: 1;
+    }
+    .profile-name{
+        position: static;
+        text-align: center;
+    }
+    .bud{
+        text-align: right;
+    }
+    .accnos{
+        position: static;
+        text-align: center;
+        align-items: center;
+        margin: auto;
+        width: 500px;
+    }
+  }
+#EditProf{
+    z-index: 9998;
+    font-family: 'Krub';
+    transition: ease-in 0.2s;
+}
+.modal-content{
+    background-color: rgba(255, 255, 255, 0.644);
+    backdrop-filter: blur(5px);
+}
+.formlabel{
+    font-size: 25px;
+}
+input[type='submit']{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: 0.8s ease;
+}
+input[type='submit']:hover{
+    background-color: transparent;
+    border: black solid 2px;
+    color: black;
+}
+input[type='text']{
+    border: solid black 1px;
+    color: white;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+input[type='password']{
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 10px;
+    border: solid black 1px;
+}
+#imgupload{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 50px;
+    transition: 0.8s ease;
+    text-align: center;
+}
+#imgupload:hover{
+    background-color: rgb(0, 255, 98);
+    color: rgb(0, 0, 0);
+}
+#croppie-demo1{
+    margin-bottom: 50px !important;
+}

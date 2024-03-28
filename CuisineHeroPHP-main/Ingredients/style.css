@@ -1,0 +1,209 @@
+.collapsibleNavbar{
+    transition: ease 0.8s;
+}
+#banner{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color:rgba(15, 11, 37, 0.5);
+    justify-content: space-between;
+    width: 100%;
+    min-height: 8vh;
+    z-index: 1000;
+    align-items: center;
+    margin:auto;
+    top: 0;
+}
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    margin-top: 2vh;
+}
+#navtext{
+    font-family: 'Raleway';
+    font-size: 3vw;
+    color: white;
+    transition: top .6s;
+}
+.nav-link{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    list-style: none;
+    font-family: 'Krub';
+}
+.navbar-brand img{
+    width: 50px;
+    height: 50px;
+}
+.navbar{
+    position: relative;
+}
+.icons .row div button{
+    outline: none;
+    padding: 0;
+    width: 50px;
+    margin: 10px;
+}
+
+.icons .row div button img{
+    border: 1px solid black;
+    padding: 5px;
+    width: 50px;
+    border-radius: 14px;
+    background-color: white;
+}
+.icons .row div button img:hover{
+    filter:invert(100);
+    -webkit-transition: ease-in-out 0.3s;
+}
+.icons .row div button.liked img{
+    filter:invert(100);
+}
+.icons{
+    position: absolute;
+    top: 300px;
+}
+.Recipe-Name{
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    padding-top: 30px;
+    width: 500px;
+}
+.Indention-Ing{
+    text-indent: 40px;
+}
+.Ingredient-Title{
+    padding: 10px;
+}
+.navbar{
+    background-color: black;
+}
+.more{
+    position: absolute;
+    top: 600px;
+    left: 370px;
+}
+.more div button img{
+    border: 1px solid black;
+    padding: 5px;
+    width: 50px;
+    border-radius: 14px;
+    margin: 10px;
+    background-color: white;
+}
+.more div button img:hover{
+    filter:invert(100);
+    -webkit-transition: ease-in-out 0.3s;
+}
+div div div a.dpup:hover{
+    background-color: black;
+    color: white;
+    -webkit-transition: ease-in-out 0.2s;
+}
+iframe{
+    width: 500px;
+    height: 300px;
+}
+#foodImg{
+    position: absolute;
+    top: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+.icons{
+    z-index: 1;
+    width: 0px;
+}
+button.comment-btn{ /*comment button*/
+    display: block;
+    margin-left: auto;
+}
+.dp{
+    position: relative;
+    width:50px;
+    height: 50px;
+    border: solid black;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.dp img{
+    max-width:100%;
+    max-height:100%;
+}
+.usrnm{
+    position: relative;
+    left: 65px;
+    bottom: 50px;
+    width: 330px;
+}
+.card{
+    padding: 10px;
+}
+.usrnm h4{
+    font-family: 'Krub';
+    width: 300px;
+}
+button.del-com{
+    position: absolute;
+    display: block;
+    border-radius: 25px;
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    left: 340px;
+    bottom: 40px;
+}
+button.del-com div{
+    position: absolute;
+    left: 7px;
+    bottom: 0px;
+}
+.modal{
+    z-index: 9998;
+}
+.spacing{
+    margin-top: 100px;
+}
+@media screen and (max-width: 768px) {
+    .spacing{
+        margin-top: 0px;
+    }
+    .adjust{
+        margin-top: -60px;
+    }
+    .foodImg{
+        position: relative;
+        overflow: hidden;
+        width: 100vw;
+        height: 65vh;
+        padding: 0px;
+        box-sizing: content-box;
+        bottom: 70px;
+    }
+    .dropdown-menu .like-btn.liked{
+        background-color: black;
+        color: white;
+    }
+    #foodImg{
+        position: static;
+        width: 100vw;
+        height: auto;
+        margin: auto;
+        display: block;
+        margin: 0px;
+    }
+    button.del-com{
+        right: 50px;
+    }
+    iframe{
+        position: relative;
+        width: 95vw;
+        height: auto;
+        padding: 0px;
+        margin: 0px;
+        box-sizing: content-box;
+    }
+  }
