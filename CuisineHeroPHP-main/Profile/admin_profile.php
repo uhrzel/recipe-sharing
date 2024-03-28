@@ -23,24 +23,23 @@ if (isset($_SESSION['firstname']) && isset($_SESSION['email'])) {
     <header>
         <nav class="navbar navbar-expand-md" id="banner">
             <div class="container-fluid" id="banner1">
-                <a class="navbar-brand" href="#"><img src="../Images\logo white.png"></a>
+                <a class="navbar-brand" href="feed.php"><img src="Images\logo white.png"></a>
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <img src="../Images\burjer.png" width="30" height="20">
+                    <img src="Images\burjer.png" width="30" height="20">
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link d-block d-sm-block d-md-none" href="../feed.php">CuisineHero</a>
+                            <a class="nav-link d-block d-sm-block d-md-none" href="index.html">CuisineHero</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Search/search.php">Search</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../feed_admin.php">Approvals</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Feed" href="../feed.php">Feed</a>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Profile</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../about.php">About</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="../DB/Logout.php">Logout</a>
                         </li>
@@ -62,24 +61,26 @@ if (isset($_SESSION['firstname']) && isset($_SESSION['email'])) {
         <div class="container-fluid spacing" id="hey">
             <div class="row">
                 <div class="col-12 text-center" id="buffer">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link d-block d-sm-block d-md-none" href="index.html">CuisineHero</a>
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item tab1 d-none d-md-block">
+                            <a class="nav-link active" data-toggle="tab" href="#recp">Recipes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Search/search.php">Search</a>
+                        <li class="nav-item tab1 d-none d-md-block">
+                            <a class="nav-link" data-toggle="tab" href="#fav">Favorites</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Approvals</a>
+                        <li class="nav-item tab1 d-none d-md-block">
+                            <a class="nav-link" data-toggle="tab" href="#fol">Following</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Profile/admin_profile.php">Profile</a>
+                    </ul>
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item tab1 d-md-none">
+                            <a class="nav-link active" data-toggle="tab" href="#recp"><img width="25px" src="icons/chef-hat.png"></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.php">About</a>
+                        <li class="nav-item tab1 d-md-none">
+                            <a class="nav-link" data-toggle="tab" href="#fav"><img width="25px" src="icons/like.png"></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="DB/Logout.php">Logout</a>
+                        <li class="nav-item tab1 d-md-none">
+                            <a class="nav-link" data-toggle="tab" href="#fol"><img width="25px" src="icons/friends.png"></a>
                         </li>
                     </ul>
                 </div>
