@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `food` (
   `proced` text NOT NULL,
   `nutri_info` text DEFAULT NULL,
   `likes` int(10) NOT NULL,
-  `status` enum('approve','cancel') NOT NULL DEFAULT 'approve',
+  `status` enum('approve','cancel') NOT NULL DEFAULT 'pending',
   `regdate` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;

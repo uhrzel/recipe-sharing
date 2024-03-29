@@ -150,12 +150,12 @@
                     method: 'POST',
                     data: {
                         foodId: foodId,
-                        status: 'Cancelled'
+                        status: 'cancelled'
                     },
                     success: function(response) {
                         console.log('Status updated successfully.');
                         // Update the status cell in the corresponding row
-                        button.closest('tr').find('td:nth-child(7)').text('Cancelled');
+                        button.closest('tr').find('td:nth-child(7)').text('cancelled');
                         // Disable the buttons since the status is now 'Cancelled'
                         button.prop('disabled', true).siblings('.completeBtn').prop('disabled', true);
                     },

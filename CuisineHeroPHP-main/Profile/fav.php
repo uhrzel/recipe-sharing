@@ -1,43 +1,43 @@
 <?php
 include '../DB/cred.php';
-$email = isset($_SESSION['email'])? $_SESSION['email'] : null;
+$email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 
-$con = mysqli_connect($server,$username,$password,$dbname);
+$con = mysqli_connect($server, $username, $password, $dbname);
 $query = "SELECT * FROM like_log WHERE email = '$email' ORDER By id Desc";
-if ($result = $con->query($query)){
-while($row = $result->fetch_assoc()){
-    $food_id = $row['food_id'];
-    $queryfav = "SELECT * FROM food WHERE food_id='$food_id'";
-    $result1 = $con->query($queryfav);
-        while($row1 = $result1->fetch_array()){
+if ($result = $con->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        $food_id = $row['food_id'];
+        $queryfav = "SELECT * FROM food WHERE food_id='$food_id'";
+        $result1 = $con->query($queryfav);
+        while ($row1 = $result1->fetch_array()) {
             $email1 = $row1['author'];
             echo '<div class="card col-12 col-md-4">
-            <a href="javascript:void(0)" class="link1" var="'.$row1['author'].'">
+            <a href="javascript:void(0)" class="link1" var="' . $row1['author'] . '">
             <div class="dp">';
             $queryname = "SELECT * FROM acc WHERE email='$email1'";
             $result2 = $con->query($queryname);
-            while ($row2 = $result2->fetch_array()){
-            echo'
-            <img src="images/'.$row2['dispic'].'">
+            while ($row2 = $result2->fetch_array()) {
+                echo '
+            <img src="images/' . $row2['dispic'] . '">
             </div>
             <div class="usrnm">
-            <p>'.$row2['firstname'].' '.$row2['lastname'].'';
+            <p>' . $row2['firstname'] . ' ' . $row2['lastname'] . '';
             }
             $result1 = $con->query($queryfav);
-            while($row1 = $result1->fetch_array()){
-            echo '</p>
+            while ($row1 = $result1->fetch_array()) {
+                echo '</p>
             </div>
             </a>
-            <a href="javascript:void(0)" class="link" var="'.$row['food_id'].'">
+            <a href="javascript:void(0)" class="link" var="' . $row['food_id'] . '">
             <div class="foodpic">';
-            $queryImg = "SELECT * FROM recipe_images WHERE food_id='$food_id'";
-            $resultImg = $con->query($queryImg);
-            $rowImg = $resultImg -> fetch_assoc();
-            echo'<img class="img-fluid" src="../Ingredients/Images/'.$rowImg['food_img'].'">
+                $queryImg = "SELECT * FROM recipe_images WHERE food_id='$food_id'";
+                $resultImg = $con->query($queryImg);
+                $rowImg = $resultImg->fetch_assoc();
+                echo '<img class="img-fluid" src="../Ingredients/Images/' . $rowImg['food_img'] . '">
             </div>
             <div class="foodlabel">
-            <h2>'.$row1['food_name'].'</h2>         
-            <p>Date Posted: '.substr($row1['regdate'],0,16).'</p>
+            <h2>' . $row1['food_name'] . '</h2>         
+            <p>Date Posted: ' . substr($row1['regdate'], 0, 16) . '</p>
             </div>
             </a>
             </div>
@@ -53,4 +53,3 @@ while($row = $result->fetch_assoc()){
         }
     }
 }
-?>

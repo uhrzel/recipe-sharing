@@ -37,8 +37,20 @@ $queryf = "SELECT * FROM food WHERE author = '$email'";
                 </div>
                 <div class="foodlabel">
                     <h2>' . $row['food_name'] . '</h2>         
-                    <p>Date Posted: ' . substr($row['regdate'], 0, 16) . '</p>
-                </div>
+                    <p>Date Posted: ' . substr($row['regdate'], 0, 16) . '</p>';
+
+            echo '<p>Status: <span style="background-color:';
+
+            if ($row['status'] == 'cancelled') {
+                echo 'red';
+            } elseif ($row['status'] == 'approved') {
+                echo 'green';
+            } elseif ($row['status'] == 'pending') {
+                echo 'yellow';
+            }
+            echo ';">' . $row['status'] . '</span></p>';
+
+            echo '</div>
             </a>
             <div class="buttons">
         

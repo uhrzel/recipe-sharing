@@ -65,12 +65,12 @@ if (isset($_SESSION['firstname']) && isset($_SESSION['email'])) {
                         <li class="nav-item tab1 d-none d-md-block">
                             <a class="nav-link active" data-toggle="tab" href="#recp">Recipes</a>
                         </li>
-                        <li class="nav-item tab1 d-none d-md-block">
+                        <!--     <li class="nav-item tab1 d-none d-md-block">
                             <a class="nav-link" data-toggle="tab" href="#fav">Favorites</a>
                         </li>
                         <li class="nav-item tab1 d-none d-md-block">
                             <a class="nav-link" data-toggle="tab" href="#fol">Following</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="nav nav-tabs justify-content-center" role="tablist">
                         <li class="nav-item tab1 d-md-none">
