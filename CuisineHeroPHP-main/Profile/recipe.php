@@ -39,7 +39,7 @@ $queryf = "SELECT food.*, recipe_images.food_img FROM food JOIN recipe_images ON
                 <div class="foodlabel">
                     <h2>' . $row['food_name'] . '</h2>         
                     <p>Date Posted: ' . substr($row['regdate'], 0, 16) . '</p>';
-            // Display status
+
             echo '<p>Status: ' . $row['status'] . '</p>';
             echo '</div>
             </a>
