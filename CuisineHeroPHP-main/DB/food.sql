@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 13, 2021 at 08:58 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1
+-- Generation Time: Mar 29, 2024 at 07:51 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,9 +27,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `acc`
 --
 
-DROP TABLE IF EXISTS `acc`;
-CREATE TABLE IF NOT EXISTS `acc` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `acc` (
+  `id` int(6) NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
@@ -40,19 +38,19 @@ CREATE TABLE IF NOT EXISTS `acc` (
   `bio` text NOT NULL,
   `followno` int(10) NOT NULL,
   `recpno` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `role` varchar(10) NOT NULL DEFAULT 'user'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `acc`
 --
 
-INSERT INTO `acc` (`id`, `firstname`, `lastname`, `email`, `pass`, `banner`, `dispic`, `bio`, `followno`, `recpno`) VALUES
-(8, 'Reynaldo', 'Factor', 'factorjun0309@gmail.com', 'yeah', '1623617642.png', '1623617661.png', '', 1, 0),
-(9, 'testx', 'testx', 'testx@gmail.com', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0),
-(13, 'aa', 'a', 'a', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0),
-(14, 'CuisineHero', ' ', 'cuisinehero@gg.com', 'admin', '1623084420.png', '1623084421.png', '', 2, 2),
-(15, 'testx', 'a', 'a@g.com', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0);
+INSERT INTO `acc` (`id`, `firstname`, `lastname`, `email`, `pass`, `banner`, `dispic`, `bio`, `followno`, `recpno`, `role`) VALUES
+(8, 'Reynaldo', 'Factor', 'factorjun0309@gmail.com', 'yeah', '1623617642.png', '1711680751.png', '', 1, 0, 'user'),
+(9, 'testx', 'testx', 'testx@gmail.com', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0, 'user'),
+(13, 'aa', 'a', 'a', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0, 'user'),
+(14, 'Admin', ' ', 'cuisinehero@gg.com', 'admin', '1623084420.png', '1623084421.png', '', 2, 2, 'admin'),
+(15, 'testx', 'a', 'a@g.com', '1', 'defaultban.png', 'defaultdp.png', '', 0, 0, 'user');
 
 -- --------------------------------------------------------
 
@@ -60,14 +58,12 @@ INSERT INTO `acc` (`id`, `firstname`, `lastname`, `email`, `pass`, `banner`, `di
 -- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE IF NOT EXISTS `account` (
+CREATE TABLE `account` (
   `id` int(100) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `account`
@@ -82,15 +78,12 @@ INSERT INTO `account` (`id`, `username`, `email`, `password`) VALUES
 -- Table structure for table `bake`
 --
 
-DROP TABLE IF EXISTS `bake`;
-CREATE TABLE IF NOT EXISTS `bake` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bake` (
+  `id` int(100) NOT NULL,
   `bake_name` varchar(100) DEFAULT NULL,
   `bake_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -98,15 +91,13 @@ CREATE TABLE IF NOT EXISTS `bake` (
 -- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` int(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `food_id` int(30) NOT NULL,
   `comment` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -114,14 +105,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Table structure for table `condi`
 --
 
-DROP TABLE IF EXISTS `condi`;
-CREATE TABLE IF NOT EXISTS `condi` (
-  `condi_id` int(6) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `condi` (
+  `condi_id` int(6) NOT NULL,
   `condi_name` varchar(30) NOT NULL,
   `condi_amt` varchar(30) NOT NULL,
-  `food_id` int(6) NOT NULL,
-  PRIMARY KEY (`condi_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+  `food_id` int(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `condi`
@@ -141,15 +130,12 @@ INSERT INTO `condi` (`condi_id`, `condi_name`, `condi_amt`, `food_id`) VALUES
 -- Table structure for table `dairy`
 --
 
-DROP TABLE IF EXISTS `dairy`;
-CREATE TABLE IF NOT EXISTS `dairy` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dairy` (
+  `id` int(100) NOT NULL,
   `dairy_name` varchar(100) DEFAULT NULL,
   `dairy_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -157,15 +143,12 @@ CREATE TABLE IF NOT EXISTS `dairy` (
 -- Table structure for table `dessert`
 --
 
-DROP TABLE IF EXISTS `dessert`;
-CREATE TABLE IF NOT EXISTS `dessert` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dessert` (
+  `id` int(100) NOT NULL,
   `dessert_name` varchar(100) DEFAULT NULL,
   `dessert_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -173,15 +156,12 @@ CREATE TABLE IF NOT EXISTS `dessert` (
 -- Table structure for table `fish`
 --
 
-DROP TABLE IF EXISTS `fish`;
-CREATE TABLE IF NOT EXISTS `fish` (
-  `fish_id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fish` (
+  `fish_id` int(100) NOT NULL,
   `fish_name` varchar(100) DEFAULT NULL,
   `fish_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`fish_id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -189,13 +169,11 @@ CREATE TABLE IF NOT EXISTS `fish` (
 -- Table structure for table `follow_log`
 --
 
-DROP TABLE IF EXISTS `follow_log`;
-CREATE TABLE IF NOT EXISTS `follow_log` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `follow_log` (
+  `id` int(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `author` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+  `author` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `follow_log`
@@ -212,9 +190,8 @@ INSERT INTO `follow_log` (`id`, `email`, `author`) VALUES
 -- Table structure for table `food`
 --
 
-DROP TABLE IF EXISTS `food`;
-CREATE TABLE IF NOT EXISTS `food` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `food` (
+  `id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL,
   `author` varchar(50) NOT NULL,
   `food_name` varchar(30) NOT NULL,
@@ -225,19 +202,20 @@ CREATE TABLE IF NOT EXISTS `food` (
   `proced` text NOT NULL,
   `nutri_info` text DEFAULT NULL,
   `likes` int(10) NOT NULL,
-  `status` enum('approve','cancel') NOT NULL DEFAULT 'pending',
+  `status` varchar(10) NOT NULL DEFAULT 'pending',
   `regdate` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
+  `price` decimal(10,2) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`id`, `food_id`, `author`, `food_name`, `cook_time`, `prep_time`, `servings`, `video_link`, `proced`, `nutri_info`, `likes`, `regdate`) VALUES
-(1, 1, 'cuisinehero@gg.com', 'Adobo', '30 minutes', '10 minutes', '6-10', '<iframe width=\"950\" height=\"534\" src=\"https://www.youtube.com/embed/mtyULaM6RfQ\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'procedure pag gawa ng adobo', 'nutri info here', 2, '2021-06-10 09:31:29'),
-(2, 2, 'cuisinehero@gg.com', 'Nilaga', '30 minutes', '10 minutes', '6-10', '<iframe width=\"950\" height=\"534\" src=\"https://www.youtube.com/embed/CDFsyd92ezU\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'procedure ng pag gawa ng nilaga', 'nutri info ng nilaga', 2, '2021-06-10 09:30:13');
+INSERT INTO `food` (`id`, `food_id`, `author`, `food_name`, `cook_time`, `prep_time`, `servings`, `video_link`, `proced`, `nutri_info`, `likes`, `status`, `regdate`, `price`) VALUES
+(9, 3, 'factorjun0309@gmail.com', 'ok', '1 hour', 'sgaha', '4 grams', NULL, 'sge lan', '21', 0, 'pending', '2024-03-28 18:52:11', 21.00),
+(10, 4, 'factorjun0309@gmail.com', 'shesh', '30 minutes', '1 hours', '50 grams', NULL, 'gege', 'awts', 0, 'pending', '2024-03-28 19:08:45', 40.00),
+(11, 5, 'a@g.com', 'shocks', '1 hour', '30 minutes', '2 grams', NULL, 'okkk', 'okkk', 0, 'pending', '2024-03-28 19:10:08', 100.00),
+(2, 2, 'cuisinehero@gg.com', 'Nilaga', '30 minutes', '10 minutes', '6-10', '<iframe width=\"950\" height=\"534\" src=\"https://www.youtube.com/embed/CDFsyd92ezU\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 'procedure ng pag gawa ng nilaga', 'nutri info ng nilaga', 2, 'pending', '2021-06-10 01:30:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -245,15 +223,12 @@ INSERT INTO `food` (`id`, `food_id`, `author`, `food_name`, `cook_time`, `prep_t
 -- Table structure for table `fruit`
 --
 
-DROP TABLE IF EXISTS `fruit`;
-CREATE TABLE IF NOT EXISTS `fruit` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fruit` (
+  `id` int(100) NOT NULL,
   `fruit_name` varchar(100) DEFAULT NULL,
   `fruit_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -261,12 +236,10 @@ CREATE TABLE IF NOT EXISTS `fruit` (
 -- Table structure for table `ingredients_all`
 --
 
-DROP TABLE IF EXISTS `ingredients_all`;
-CREATE TABLE IF NOT EXISTS `ingredients_all` (
-  `id` int(6) NOT NULL AUTO_INCREMENT,
-  `ing_name` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+CREATE TABLE `ingredients_all` (
+  `id` int(6) NOT NULL,
+  `ing_name` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `ingredients_all`
@@ -306,14 +279,12 @@ INSERT INTO `ingredients_all` (`id`, `ing_name`) VALUES
 -- Table structure for table `like_log`
 --
 
-DROP TABLE IF EXISTS `like_log`;
-CREATE TABLE IF NOT EXISTS `like_log` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `like_log` (
+  `id` int(10) NOT NULL,
   `email` varchar(30) NOT NULL,
   `likes` int(1) NOT NULL,
-  `food_id` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
+  `food_id` int(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `like_log`
@@ -321,9 +292,7 @@ CREATE TABLE IF NOT EXISTS `like_log` (
 
 INSERT INTO `like_log` (`id`, `email`, `likes`, `food_id`) VALUES
 (153, 'cuisinehero@gg.com', 1, 1),
-(159, 'factorjun0309@gmail.com', 1, 2),
 (158, 'factorjun0309@gmail.com', 1, 1),
-(160, 'a@g.com', 1, 2),
 (162, 'factorjun0309@gmail.com', 1, 3);
 
 -- --------------------------------------------------------
@@ -332,14 +301,12 @@ INSERT INTO `like_log` (`id`, `email`, `likes`, `food_id`) VALUES
 -- Table structure for table `meat`
 --
 
-DROP TABLE IF EXISTS `meat`;
-CREATE TABLE IF NOT EXISTS `meat` (
-  `meat_id` int(6) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `meat` (
+  `meat_id` int(6) NOT NULL,
   `meat_name` varchar(30) NOT NULL,
   `meat_amt` varchar(30) NOT NULL,
-  `food_id` int(6) NOT NULL,
-  PRIMARY KEY (`meat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+  `food_id` int(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `meat`
@@ -357,15 +324,12 @@ INSERT INTO `meat` (`meat_id`, `meat_name`, `meat_amt`, `food_id`) VALUES
 -- Table structure for table `nuts`
 --
 
-DROP TABLE IF EXISTS `nuts`;
-CREATE TABLE IF NOT EXISTS `nuts` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nuts` (
+  `id` int(100) NOT NULL,
   `nuts_name` varchar(100) DEFAULT NULL,
   `nuts_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -373,15 +337,12 @@ CREATE TABLE IF NOT EXISTS `nuts` (
 -- Table structure for table `oil`
 --
 
-DROP TABLE IF EXISTS `oil`;
-CREATE TABLE IF NOT EXISTS `oil` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `oil` (
+  `id` int(100) NOT NULL,
   `oil_name` varchar(100) DEFAULT NULL,
   `oil_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -389,22 +350,20 @@ CREATE TABLE IF NOT EXISTS `oil` (
 -- Table structure for table `recipe_images`
 --
 
-DROP TABLE IF EXISTS `recipe_images`;
-CREATE TABLE IF NOT EXISTS `recipe_images` (
-  `id` int(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recipe_images` (
+  `id` int(20) NOT NULL,
   `food_img` varchar(30) NOT NULL,
   `food_id` int(11) NOT NULL,
-  `author` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+  `author` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `recipe_images`
 --
 
 INSERT INTO `recipe_images` (`id`, `food_img`, `food_id`, `author`) VALUES
-(2, '1623338444.png', 1, 'cuisinehero@gg.com'),
-(4, '1623341763.png', 2, 'cuisinehero@gg.com');
+(46, '1711694505.png', 3, 'a@g.com'),
+(45, '1711694436.png', 2, 'factorjun0309@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -412,15 +371,12 @@ INSERT INTO `recipe_images` (`id`, `food_img`, `food_id`, `author`) VALUES
 -- Table structure for table `soup`
 --
 
-DROP TABLE IF EXISTS `soup`;
-CREATE TABLE IF NOT EXISTS `soup` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `soup` (
+  `id` int(100) NOT NULL,
   `soup_name` varchar(100) DEFAULT NULL,
   `soup_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -428,15 +384,12 @@ CREATE TABLE IF NOT EXISTS `soup` (
 -- Table structure for table `spice`
 --
 
-DROP TABLE IF EXISTS `spice`;
-CREATE TABLE IF NOT EXISTS `spice` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `spice` (
+  `id` int(100) NOT NULL,
   `spice_name` varchar(100) DEFAULT NULL,
   `spice_amt` varchar(100) DEFAULT NULL,
-  `food_id` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `food_id` (`food_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
+  `food_id` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -444,14 +397,12 @@ CREATE TABLE IF NOT EXISTS `spice` (
 -- Table structure for table `veggies`
 --
 
-DROP TABLE IF EXISTS `veggies`;
-CREATE TABLE IF NOT EXISTS `veggies` (
-  `veggies_id` int(6) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `veggies` (
+  `veggies_id` int(6) NOT NULL,
   `veggies_name` varchar(30) NOT NULL,
   `veggies_amt` varchar(30) NOT NULL,
-  `food_id` int(6) NOT NULL,
-  PRIMARY KEY (`veggies_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+  `food_id` int(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `veggies`
@@ -462,11 +413,247 @@ INSERT INTO `veggies` (`veggies_id`, `veggies_name`, `veggies_amt`, `food_id`) V
 (2, 'Potato', '1', 1),
 (3, 'Potato', '2', 2),
 (4, 'Petsay', '1', 2);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bake`
+--
+ALTER TABLE `bake`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `condi`
+--
+ALTER TABLE `condi`
+  ADD PRIMARY KEY (`condi_id`);
+
+--
+-- Indexes for table `dairy`
+--
+ALTER TABLE `dairy`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `dessert`
+--
+ALTER TABLE `dessert`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `fish`
+--
+ALTER TABLE `fish`
+  ADD PRIMARY KEY (`fish_id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `follow_log`
+--
+ALTER TABLE `follow_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `food`
+--
+ALTER TABLE `food`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `fruit`
+--
+ALTER TABLE `fruit`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `ingredients_all`
+--
+ALTER TABLE `ingredients_all`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `like_log`
+--
+ALTER TABLE `like_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `meat`
+--
+ALTER TABLE `meat`
+  ADD PRIMARY KEY (`meat_id`);
+
+--
+-- Indexes for table `nuts`
+--
+ALTER TABLE `nuts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `oil`
+--
+ALTER TABLE `oil`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `recipe_images`
+--
+ALTER TABLE `recipe_images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `soup`
+--
+ALTER TABLE `soup`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `spice`
+--
+ALTER TABLE `spice`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `food_id` (`food_id`);
+
+--
+-- Indexes for table `veggies`
+--
+ALTER TABLE `veggies`
+  ADD PRIMARY KEY (`veggies_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bake`
+--
+ALTER TABLE `bake`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT for table `condi`
+--
+ALTER TABLE `condi`
+  MODIFY `condi_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `dairy`
+--
+ALTER TABLE `dairy`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `dessert`
+--
+ALTER TABLE `dessert`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `fish`
+--
+ALTER TABLE `fish`
+  MODIFY `fish_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+
+--
+-- AUTO_INCREMENT for table `follow_log`
+--
+ALTER TABLE `follow_log`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `food`
+--
+ALTER TABLE `food`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `fruit`
+--
+ALTER TABLE `fruit`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `ingredients_all`
+--
+ALTER TABLE `ingredients_all`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `like_log`
+--
+ALTER TABLE `like_log`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+
+--
+-- AUTO_INCREMENT for table `meat`
+--
+ALTER TABLE `meat`
+  MODIFY `meat_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `nuts`
+--
+ALTER TABLE `nuts`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `oil`
+--
+ALTER TABLE `oil`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `recipe_images`
+--
+ALTER TABLE `recipe_images`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `soup`
+--
+ALTER TABLE `soup`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `spice`
+--
+ALTER TABLE `spice`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `veggies`
+--
+ALTER TABLE `veggies`
+  MODIFY `veggies_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-ALTER TABLE food
-ADD COLUMN price DECIMAL(10, 2);
-
