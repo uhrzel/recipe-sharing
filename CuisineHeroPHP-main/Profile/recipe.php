@@ -4,7 +4,8 @@ $email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
 
 $con = mysqli_connect($server, $username, $password, $dbname);
 $query = "SELECT * FROM acc WHERE email = '$email'";
-$queryf = "SELECT * FROM food WHERE author = '$email'";
+$queryf = "SELECT food.*, recipe_images.food_img FROM food JOIN recipe_images ON food.food_id = recipe_images.food_id WHERE food.author = '$email'";
+
 ?>
 
 <!DOCTYPE html>
@@ -38,24 +39,14 @@ $queryf = "SELECT * FROM food WHERE author = '$email'";
                 <div class="foodlabel">
                     <h2>' . $row['food_name'] . '</h2>         
                     <p>Date Posted: ' . substr($row['regdate'], 0, 16) . '</p>';
-
-            echo '<p>Status: <span style="background-color:';
-
-            if ($row['status'] == 'cancelled') {
-                echo 'red';
-            } elseif ($row['status'] == 'approved') {
-                echo 'green';
-            } elseif ($row['status'] == 'pending') {
-                echo 'yellow';
-            }
-            echo ';">' . $row['status'] . '</span></p>';
-
+            // Display status
+            echo '<p>Status: ' . $row['status'] . '</p>';
             echo '</div>
             </a>
             <div class="buttons">
         
                     <input type="hidden" name="food_id" value="' . $row['food_id'] . '">
-                    <button class="btn" id="EditRecipe">Edit</button>
+                    <button class="btn" data-toggle= "modal" data-target="#editModal' . $row['food_id'] . '">Edit</button>
     
                
                     <input type="hidden" name="food_id" value="' . $row['food_id'] . '">
@@ -63,6 +54,72 @@ $queryf = "SELECT * FROM food WHERE author = '$email'";
    
             </div>
         </div>';
+
+            //for edit
+
+            echo '<div class="modal fade" id="editModal' . $row['food_id'] . '" tabindex="-1" role="dialog" aria-labelledby="editModalLabel' . $row['food_id'] . '" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel' . $row['food_id'] . '">Edit Food</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+        <label for="foodImg">Current Food Image</label>
+        <img class="img-fluid" src="../Ingredients/Images/' . $rowImg['food_img'] . '" style="width: 200px; height: auto;">
+    </div>
+                            <form id="editForm' . $row['food_id'] . '">
+                                   <div class="form-group">
+            <label for="foodImg">Choose New Food Image</label>
+            <input type="file" class="form-control-file" id="foodImg' . $row['food_id'] . '" name="foodImg" accept="image/*">
+        </div>
+                                <div class="form-group">
+                                    <label for="foodName">Food Name</label>
+                                    <input type="text" class="form-control" id="foodName' . $row['food_id'] . '" name="foodName" value="' . $row['food_name'] . '" style="color: black;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cookTime">Cook Time</label>
+                                    <input type="text" class="form-control" id="cookTime' . $row['food_id'] . '" name="cookTime" value="' . $row['cook_time'] . '" style="color: black;">
+                                </div>
+                                  <div class="form-group">
+                                    <label for="prepTime">Prep Time</label>
+                                    <input type="text" class="form-control" id="prepTime' . $row['food_id'] . '" name="prepTime" value="' . $row['prep_time'] . '" style="color: black;">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="servings">Servings</label>
+                                    <input type="text" class="form-control" id="servings' . $row['food_id'] . '" name="servings" value="' . $row['servings'] . '" style="color: black;">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="videoLink">Video Link</label>
+                                    <input type="text" class="form-control" id="videoLink' . $row['food_id'] . '" name="videoLink" value="' . $row['video_link'] . '" style="color: black;">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="proceed">Proceed</label>
+                                    <input type="text" class="form-control" id="proceed' . $row['food_id'] . '" name="proceed" value="' . $row['proced'] . '" style="color: black;">
+                                </div>
+                                     <div class="form-group">
+                                    <label for="nutriInfo">Nutri Info</label>
+                                    <input type="text" class="form-control" id="nutriInfo' . $row['food_id'] . '" name="nutriInfo" value="' . $row['nutri_info'] . '" style="color: black;">
+                                </div>
+                                     <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" class="form-control" id="price' . $row['food_id'] . '" name="price" value="' . $row['price'] . '" style="color: black;">
+                                </div>
+                                <!-- Add more fields here for other properties you want to edit -->
+                                <input type="hidden" name="food_id" value="' . $row['food_id'] . '">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary save-edit" data-food-id="' . $row['food_id'] . '">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+            // End edit modal
 
             // Modal for delete confirmation
             echo '<div class="modal fade" id="deleteModal' . $row['food_id'] . '" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel' . $row['food_id'] . '" aria-hidden="true">
@@ -107,8 +164,33 @@ $queryf = "SELECT * FROM food WHERE author = '$email'";
                         // Hide the modal
                         $('#deleteModal' + foodId).modal('hide');
 
-                        // Remove the card containing the deleted item
-                        $('#deleteModal' + foodId).closest('.card').remove();
+                        location.reload();
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $(".save-edit").click(function() {
+                var foodId = $(this).data('food-id');
+                var formData = new FormData($("#editForm" + foodId)[0]);
+
+                formData.append("foodId", foodId);
+
+                $.ajax({
+                    type: "POST",
+                    url: "edit_food.php",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        $('#editModal' + foodId).modal('hide');
+                        location.reload();
+
                     },
                     error: function(xhr, status, error) {
                         console.error(xhr.responseText);

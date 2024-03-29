@@ -133,6 +133,7 @@
                         button.closest('tr').find('td:nth-child(7)').text('approve');
                         // Disable the buttons since the status is now 'Completed'
                         button.prop('disabled', true).siblings('.cancelBtn').prop('disabled', true);
+                        location.reload();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating status:', error);
@@ -158,6 +159,7 @@
                         button.closest('tr').find('td:nth-child(7)').text('cancelled');
                         // Disable the buttons since the status is now 'Cancelled'
                         button.prop('disabled', true).siblings('.completeBtn').prop('disabled', true);
+                        location.reload();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating status:', error);
